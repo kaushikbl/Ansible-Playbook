@@ -1,0 +1,10 @@
+---
+- hosts: all
+  vars:
+   name: kaushik
+
+  tasks:
+    - name: display name varaible value
+      debug:
+       var: name
+...

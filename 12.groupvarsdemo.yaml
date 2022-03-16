@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install java
+      yum:
+       name: "{{javaVersion}}"
+    - name: Display the java version
+      shell: java -version 2>&1 | grep version | awk '{print $3}' | sed 's/"//g'
+      register: javainstalledversion
+    - name: display the java version
+      debug:
+        var: javainstalledversion.stdout
+...

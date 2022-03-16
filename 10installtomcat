@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: Install java
+     yum:
+       name: java-1.8.0-openjdk
+       state: latest
+   - name: add tomcat
+     shell: /bin/bash
+   - name: Install apache tomcat
+     yum:
+       name: https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.76/bin/apache-tomcat-7.0.76.tar.gz
+       dest: /tmp/
+...

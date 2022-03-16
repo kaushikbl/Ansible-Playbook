@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks: 
+   - name: Install VIM Editor package
+     yum:
+      state: present
+   - name: Install ZIP package
+     yum:
+      state: present
+   - name: Install WGET package
+     yum:
+      state: present
+...
+
+

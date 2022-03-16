@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+   - "{{env}}_vars.yaml"
+  tasks:
+   - name: install HTTP server
+     yum:
+      name: httpd
+      state: present
+   - name: Start HTTP server
+     service:
+       name: httpd
+       enabled: yes
+       state: started
+   - name: copy index.html file
+     template:
+      src: index.html
+      dest: /var/www/html/index.html
+      mode: '0777'
+      group: root
+      owner: ec2-user
+...

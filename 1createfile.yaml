@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: create files in host machine
+     file:
+      path: /tmp/kbl.yaml
+      mode: 777
+      owner: root
+      group: wheel
+      state: touch
+...

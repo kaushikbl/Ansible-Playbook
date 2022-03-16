@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  vars:
+    name: Manvith-Group
+    location: Bengaluru
+  tasks:
+   - name: install HTTP server
+     yum:
+      name: httpd
+      state: present
+   - name: copy index.html file
+     template:
+      src: index.html
+      dest: /var/www/html/index.html
+     notify:
+       ReStart HTTP server:
+
+  handlers:   
+   - name: ReStart HTTP server
+     service:
+       name: httpd
+       enabled: yes
+       state: started
+...

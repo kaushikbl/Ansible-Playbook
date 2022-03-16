@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  tasks:
+   - name: create users
+     user: 
+      name: kaushik
+      create_home: yes
+...
